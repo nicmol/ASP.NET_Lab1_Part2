@@ -10,9 +10,10 @@ namespace Potlucky.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "Welcome to Potlucky. Plan your next Potluck here.";
+            //return "Welcome to Potlucky. Plan your next Potluck here.";
+            return View();
         }
 
         public IActionResult Contact()
