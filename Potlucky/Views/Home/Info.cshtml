@@ -1,16 +1,20 @@
-﻿
-@{
+﻿@{
     Layout = null;
 
 }
 <!DOCTYPE>
 <html>
 <head>
-    <h2>This page displays announcements, upcoming events</h2>
+    <meta name="viewport" content="width=device-width" />
+    <title>This page displays announcements, upcoming events</title>
 </head>
 <body>
     <div>
         <p>text possibly images here</p>
+        <ul>
+            <li><a asp-action="People">User list</a></li>
+            <li><a asp-action="Schedule">Upcoming events</a></li>
+        </ul>
     </div>
 </body>
 </html>

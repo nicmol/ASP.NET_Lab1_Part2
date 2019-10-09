@@ -1,15 +1,22 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 <!DOCTYPE>
 <html>
 <head>
-    <h2>This page displays the next event time and location :)</h2>
+    <meta name="viewport" content="width=device-width" />
+    <title>This page displays the next event time and location :)</title>
 </head>
 <body>
-    <div>   
-        <p> unordered list of times dates and locations</p>
+    <div>
+        <p>Unordered list of times dates and locations</p>
+     
+        <button onclick="back()">Back</button>
+        <script>
+            function back() {
+                window.history.back();
+            }
+        </script> 
     </div>
  </body>
 </html>
