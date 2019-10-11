@@ -8,7 +8,7 @@ namespace Potlucky.Controllers
     {
         public IActionResult Index()
         {
-            //return "Welcome to Potlucky. Plan your next Potluck here.";
+            
             return View();
         }
 
