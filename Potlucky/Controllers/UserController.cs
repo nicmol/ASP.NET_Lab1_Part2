@@ -31,5 +31,27 @@ namespace Potlucky.Controllers
         }
 
 
+
+        public IActionResult AddUser()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public RedirectToActionResult AddUser(string firstName, string lastName, string email)
+        {
+            user = new User();
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Email = email;
+
+            UserList.AddUser(user);
+
+            return RedirectToAction("Index");
+
+
+        }
+
     }
 }
