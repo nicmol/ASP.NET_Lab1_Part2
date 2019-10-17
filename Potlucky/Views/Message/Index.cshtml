@@ -1,0 +1,29 @@
+﻿@model List<Message>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List of messages</title>
+</head>
+<body>
+    List of messages: <br />
+    @foreach (Message message in Model)
+    {
+        @message.Sender.FirstName; <br />
+        @message.Sender.LastName; <br />
+        @message.Sender.Email; <br />
+        @message.MessageText; <br />
+        <br />
+
+    }
+
+    <br>
+    <a href="AddMessage">Send a message</a><br />
+    <a href="/Home">Home</a>
+
+</body>
+</html>

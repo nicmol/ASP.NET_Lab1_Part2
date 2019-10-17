@@ -11,11 +11,7 @@ namespace Potlucky.Controllers
             
             return View();
         }
-
-        public IActionResult Contact()
-        {
-            return View();
-        }
+               
 
         public IActionResult History()
         {
