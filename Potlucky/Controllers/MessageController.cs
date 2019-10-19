@@ -2,6 +2,7 @@
 using Potlucky.Models;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 
 
@@ -16,6 +17,9 @@ namespace Potlucky.Controllers
         public IActionResult Index()
         {
             List<Message> messages = MessageList.Messages;
+            //messages.OrderBy(this, message.Date);
+            messages.OrderBy(m => m.Date );
+
             return View(messages);
         }
 
