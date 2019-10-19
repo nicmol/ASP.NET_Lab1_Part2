@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Potlucky.Models;
 using System.Collections.Generic;
+using System;
+
+
+
 
 
 namespace Potlucky.Controllers
@@ -22,7 +26,7 @@ namespace Potlucky.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddMessage(string firstName, string lastName, string email, string messageText)
+        public RedirectToActionResult AddMessage(string firstName, string lastName, string email, string messageText, string date)
         {
             User user = new User();
             message = new Message();
@@ -31,7 +35,7 @@ namespace Potlucky.Controllers
             user.Email = email;
             message.MessageText = messageText;
             message.Sender = user;
-
+            message.Date = DateTime.Parse(date);
 
             MessageList.AddMessage(message);
 

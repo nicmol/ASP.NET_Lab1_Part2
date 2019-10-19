@@ -9,5 +9,6 @@ namespace Potlucky.Models
     {
         public string MessageText { get; set; }
         public User Sender { get; set; }
+        public DateTime Date { get; set; }
     }
 }
