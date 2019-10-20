@@ -5,15 +5,10 @@ using System.Threading.Tasks;
 
 namespace Potlucky.Models
 {
-    public class Message
+    public class Reply
     {
-        public string Subject { get; set; }
         public string MessageText { get; set; }
         public User Sender { get; set; }
         public DateTime Date { get; set; }
-
-        private List<Reply> replies = new List<Reply>();
-        public List<Reply> Replies { get { return replies; } }
-        
     }
 }

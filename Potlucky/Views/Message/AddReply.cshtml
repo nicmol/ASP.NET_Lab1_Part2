@@ -1,4 +1,4 @@
-﻿      
+﻿@model String
 @{
     Layout = null;
 }
@@ -6,12 +6,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Send messages</title>
+    <title>Reply</title>
 </head>
 <body>
     <div>
-        <p>Post messages and comments about our next gathering here, 
-        this page is used for planning what dishes everyone will bring and where the next potluck is</p>
+        <p>
+            Reply to @Model:
+        </p>
     </div>
     <form method="post">
         <p>
@@ -31,14 +32,11 @@
             <input name="email" /><br />
         </p>
         <p>
-            <label for="subject">Subject:</label>
-            <input name="subject" /><br />
-        </p>
-        <p>
             <label for="messageText">Message:</label>
             <textarea name="messageText"></textarea><br />
         </p>
-        <button type="submit">Send Message</button>
+        <button type="submit">Add Reply</button>
     </form>
 </body>
 </html>
+

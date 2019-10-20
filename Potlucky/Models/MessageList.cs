@@ -11,5 +11,10 @@ namespace Potlucky.Models
         {
             messages.Add(message);
         }
+        public static Message getMessageBySubject(string subject)
+        {
+            Message message = messages.Find(m => m.Subject == subject);
+            return message;
+        }
     }
 }

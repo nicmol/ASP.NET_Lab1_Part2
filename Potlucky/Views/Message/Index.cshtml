@@ -10,20 +10,36 @@
     <title>List of messages</title>
 </head>
 <body>
-    List of messages: <br />
+    <h1>List of messages:</h1>
     @foreach (Message message in Model)
     {
-        @message.Sender.FirstName; <br />
-        @message.Sender.LastName; <br />
-        @message.Sender.Email; <br />
-        @message.MessageText; <br />
-        @message.Date;<br />
+    <h2>
+        @message.Sender.FirstName <br />
+        @message.Sender.LastName <br />
+        @message.Sender.Email <br />
+        @message.Subject <br />
+        @message.MessageText <br />
+        @message.Date.ToString("d")
+    </h2>
         <br />
+        <h3>Replies:</h3>
+        @foreach (Reply reply in message.Replies)
+        {
+            @reply.Sender.FirstName<br />
+            @reply.Sender.LastName<br />
+            @reply.Sender.Email<br />
+            @reply.MessageText<br />
+            @reply.Date.ToString("d")
+        }
+
+        <a asp-action ="AddReply" asp-route-subject ="@message.Subject">Send a Reply</a>
+       
 
     }
-
+    <br />
+    <br />
     <br>
-    <a href="AddMessage">Send a message</a><br />
+    <a href="/Message/AddMessage">Send a message</a><br />
     <a href="/Home">Home</a>
 
 </body>
