@@ -18,7 +18,7 @@ namespace Potlucky.Controllers
         {
             List<Message> messages = MessageList.Messages;
 
-            messages.OrderBy(m => m.Date);
+            messages.Sort((m1, m2) => m1.Date.CompareTo(m2.Date));
 
             return View(messages);
         }
