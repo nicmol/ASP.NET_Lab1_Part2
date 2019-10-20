@@ -38,6 +38,17 @@ namespace Potlucky.Controllers
             return View();
         }
 
+        public IActionResult UserDetail(string firstName)
+        {
+
+            
+            User user = UserList.getUserByFirstName(firstName);
+            if (firstName == null)
+                return NotFound();
+
+            return View(user);
+        }
+
         [HttpPost]
         public RedirectToActionResult AddUser(string firstName, string lastName, string email)
         {

@@ -7,7 +7,6 @@ namespace Potlucky.Models
 {
     public class Message
     {
-        public string Subject { get; set; }
         public string MessageText { get; set; }
         public User Sender { get; set; }
         public DateTime Date { get; set; }

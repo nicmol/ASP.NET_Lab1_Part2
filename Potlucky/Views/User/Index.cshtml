@@ -17,6 +17,7 @@
         @user.FirstName; <br />
         @user.LastName; <br />
         @user.Email; <br />
+        <a asp-action="UserDetail" asp-route-firstName="@user.FirstName">View Details</a>
         <br />
 
     }

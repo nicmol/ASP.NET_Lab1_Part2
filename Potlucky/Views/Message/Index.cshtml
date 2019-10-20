@@ -17,7 +17,6 @@
         @message.Sender.FirstName <br />
         @message.Sender.LastName <br />
         @message.Sender.Email <br />
-        @message.Subject <br />
         @message.MessageText <br />
         @message.Date.ToString("d")
     </h2>
@@ -32,7 +31,7 @@
             @reply.Date.ToString("d")
         }
 
-        <a asp-action ="AddReply" asp-route-subject ="@message.Subject">Send a Reply</a>
+        <a asp-action ="AddReply" asp-route-messageDate ="@message.Date">Send a Reply</a>
        
 
     }

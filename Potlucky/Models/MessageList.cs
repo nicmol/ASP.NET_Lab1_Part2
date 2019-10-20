@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Potlucky.Models
 {
@@ -11,10 +12,13 @@ namespace Potlucky.Models
         {
             messages.Add(message);
         }
-        public static Message getMessageBySubject(string subject)
+ 
+        public static Message getMessageByDate(DateTime date)
         {
-            Message message = messages.Find(m => m.Subject == subject);
+
+            Message message = messages.Find(m => m.Date.ToString() == date.ToString());
             return message;
         }
     }
+
 }
