@@ -16,6 +16,7 @@ namespace Potlucky.Controllers
         public IActionResult History()
         {
             return View();
+            
         }
 
         public IActionResult Info()

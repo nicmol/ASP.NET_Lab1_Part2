@@ -1,7 +1,7 @@
 ﻿@model List<User>
 
 @{
-    Layout = null;
+    ViewData["User"] = "Title";
 }
 
 <!DOCTYPE>
@@ -12,7 +12,7 @@
 </head>
 <body>
     List of members: <br />
-    @foreach(User user in Model)
+    @foreach (User user in Model)
     {
         @user.FirstName; <br />
         @user.LastName; <br />
