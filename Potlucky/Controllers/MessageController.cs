@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-
-
-
-
 namespace Potlucky.Controllers
 {
     public class MessageController : Controller
