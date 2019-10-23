@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Potlucky.Models;
 using System.Collections.Generic;
+using System;
 
 namespace Potlucky.Controllers
 {
@@ -12,6 +13,8 @@ namespace Potlucky.Controllers
         public IActionResult Index()
         {
             List<User> users = UserList.Users;
+            users.Sort((u1, u2) => string.Compare(u1.LastName, u2.LastName, StringComparison.Ordinal));
+
             return View(users);
         }
 
