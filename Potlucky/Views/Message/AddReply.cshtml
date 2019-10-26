@@ -1,6 +1,6 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "_FormLayout";
+    ViewData["Send Reply"] = "Title";
 }
 <!DOCTYPE>
 <html>
@@ -11,28 +11,29 @@
 <body>
     <div>
         <p>
-            Reply:
+            Reply To: @ViewBag.name
         </p>
     </div>
     <form method="post">
-       
-        <p>
+        <div class="form-group">
             <label for="firstName">First Name:</label>
-            <input name="firstName" /><br />
-        </p>
-        <p>
+            <input class="form-control col-6" name="firstName" /><br />
+        </div>
+        <div class="form-group">
             <label for="lastName">Last Name:</label>
-            <input name="lastName" /><br />
-        </p>
-        <p>
+            <input class="form-control col-6" name="lastName" /><br />
+        </div>
+        <div class="form-group">
             <label for="email">Email:</label>
-            <input name="email" /><br />
-        </p>
-        <p>
+            <input class="form-control col-6" name="email" /><br />
+        </div>
+        <div class="form-group">
             <label for="messageText">Message:</label>
-            <textarea name="messageText"></textarea><br />
-        </p>
-        <button type="submit">Add Reply</button>
+            <textarea class="form-control col-6" name="messageText"></textarea><br />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" type="submit">Add Reply</button>
+        </div>
     </form>
 </body>
 </html>

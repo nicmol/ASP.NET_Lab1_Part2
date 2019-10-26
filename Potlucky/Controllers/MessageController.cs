@@ -31,8 +31,11 @@ namespace Potlucky.Controllers
             return View();
         }
 
-        public IActionResult AddReply()
+        public IActionResult AddReply(string messageDate)
         {
+            Message message = MessageList.getMessageByDate(DateTime.Parse(messageDate));
+            User user = message.Sender;
+            ViewBag.name = user.FirstName;
             return View();
         }
 
