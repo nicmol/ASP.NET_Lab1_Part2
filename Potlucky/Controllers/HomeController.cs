@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Potlucky.Models;
 
+
 namespace Potlucky.Controllers
 {
     public class HomeController : Controller

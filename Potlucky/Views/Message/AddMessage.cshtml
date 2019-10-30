@@ -1,4 +1,5 @@
-﻿      
+﻿@model Potlucky.Models.Message
+     
 @{
     Layout = "_FormLayout";
     ViewData["Title"] = "Send Message";
@@ -14,22 +15,22 @@
         <p>Post messages and comments about our next gathering here, 
         this page is used for planning what dishes everyone will bring and where the next potluck is</p>
     </div>
-    <form method="post">
+    <form asp-action="AddMessage" method="post">
         <div class="form-group">
-            <label for="firstName">First Name:</label>
-            <input class="form-control col-6" name="firstName" /><br />
+            <label asp-for="Sender.FirstName">First Name:</label>
+            <input class="form-control col-6" name="firstName" asp-for="Sender.FirstName" /><br />
         </div>
         <div class="form-group">
-            <label for="lastName">Last Name:</label>
-            <input class="form-control col-6" name="lastName" /><br />
+            <label asp-for="Sender.LastName">Last Name:</label>
+            <input class="form-control col-6"  name="lastName" asp-for="Sender.LastName" /><br />
         </div>
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input class="form-control col-6" name="email" /><br />
+            <label asp-for="Sender.Email">Email:</label>
+            <input class="form-control col-6" name="email" asp-for="Sender.Email" /><br />
         </div>
         <div class="form-group">
-            <label for="messageText">Message:</label>
-            <textarea class="form-control col-6" name="messageText"></textarea><br />
+            <label asp-for="MessageText">Message:</label>
+            <textarea class="form-control col-6" asp-for="MessageText"></textarea><br />
         </div>
         <div class="form-group">
             <button class="btn btn-default" type="submit">Send Message</button>
