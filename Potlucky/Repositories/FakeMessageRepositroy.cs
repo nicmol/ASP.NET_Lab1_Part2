@@ -1,11 +1,11 @@
-﻿using Potlucky.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace Potlucky.Models
+namespace Potlucky.Repositories
 {
-    public static class MessageList : IMessageRepository
+    public class FakeMessageRepositroy : IMessageRepository
     {
         private static List<Message> messages = new List<Message>();
         public static List<Message> Messages { get { return messages; } }
@@ -13,7 +13,7 @@ namespace Potlucky.Models
         {
             messages.Add(message);
         }
- 
+
         public static Message getMessageByDate(DateTime date)
         {
 
@@ -21,5 +21,4 @@ namespace Potlucky.Models
             return message;
         }
     }
-
 }
