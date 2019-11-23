@@ -8,6 +8,7 @@ namespace Potlucky.Controllers
 {
     public class HomeController : Controller
     {
+        //public IMessageRepository Repository = MessageList.SharedRepository;
         public IActionResult Index()
         {
             

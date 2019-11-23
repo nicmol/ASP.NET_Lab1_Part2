@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Potlucky.Models;
+using Potlucky.Repositories;
 
 namespace Potlucky
 {
@@ -33,6 +35,9 @@ namespace Potlucky
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Inject our repositories into our controllers
+            services.AddTransient<IMessageRepository, FakeMessageRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

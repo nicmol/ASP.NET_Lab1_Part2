@@ -5,16 +5,16 @@ using System.Linq;
 
 namespace Potlucky.Models
 {
-    public static class MessageList : IMessageRepository
+    public class MessageList : IMessageRepository
     {
         private static List<Message> messages = new List<Message>();
-        public static List<Message> Messages { get { return messages; } }
-        public static void AddMessage(Message message)
+        public List<Message> Messages { get { return messages; } }
+        public void AddMessage(Message message)
         {
             messages.Add(message);
         }
  
-        public static Message getMessageByDate(DateTime date)
+        public Message getMessageByDate(DateTime date)
         {
 
             Message message = messages.Find(m => m.Date.ToString() == date.ToString());

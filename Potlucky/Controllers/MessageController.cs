@@ -3,16 +3,21 @@ using Potlucky.Models;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Potlucky.Repositories;
 
 namespace Potlucky.Controllers
 {
     public class MessageController : Controller
     {
-        
+        IMessageRepository repo; //= new FakeMessageRepository();
+        public MessageController(IMessageRepository r)
+        {
+            repo = r;
+        }
 
         public IActionResult Index()
         {
-            List<Message> messages = MessageList.Messages;
+            List<Message> messages = repo.Messages;
 
             messages.Sort((m1, m2) => m2.Date.CompareTo(m1.Date));
 
@@ -33,7 +38,7 @@ namespace Potlucky.Controllers
 
         public IActionResult AddReply(string messageDate)
         {
-            Message message = MessageList.getMessageByDate(DateTime.Parse(messageDate));
+            Message message = repo.getMessageByDate(DateTime.Parse(messageDate));
             User user = message.Sender;
             ViewBag.name = user.FirstName;
             return View();
@@ -50,7 +55,7 @@ namespace Potlucky.Controllers
             message.MessageText = messageText;
             message.Sender = user;
             message.Date = DateTime.Now;
-            MessageList.AddMessage(message);
+            repo.AddMessage(message);
 
             return RedirectToAction("Index");
 
@@ -61,7 +66,7 @@ namespace Potlucky.Controllers
         public RedirectToActionResult AddReply(string firstName, string lastName, string email, 
             string messageText, string messageDate)
         {
-            Message message = MessageList.getMessageByDate(DateTime.Parse(messageDate));
+            Message message = repo.getMessageByDate(DateTime.Parse(messageDate));
             User user = new User();
             Reply reply = new Reply();
             user.FirstName = firstName;
