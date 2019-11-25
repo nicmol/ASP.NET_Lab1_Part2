@@ -41,30 +41,8 @@ namespace Potlucky.Controllers
         {
             return View();
         }
-        
-        // StatusCode method returns 404 to NotFoundExample method with a type of StatusCodeResult 
-        public StatusCodeResult NotFoundExample()
-        {
-            return StatusCode(404);
-        }
 
-        //Method returns a 204 http status code of NoContentResult type
-        public NoContentResult NoContentExample()
-        {
-            return NoContent();
-        }
-
-        //Serializes the Index view and returns it as JSON
-        public JsonResult JsonExample()
-        {
-            return Json(View("Index"));
-        }
-
-        //String example
-        public string StringExample()
-        {
-            return "Hello LCC";
-        }
+    
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
