@@ -26,13 +26,10 @@ namespace Potlucky.Controllers
                 message.Replies.Sort((r1, r2) => r2.Date.CompareTo(r1.Date));
             }
             return View(messages);
-
-
         }
 
         public IActionResult AddMessage()
         {
-
             return View();
         }
 
@@ -58,8 +55,6 @@ namespace Potlucky.Controllers
             repo.AddMessage(message);
 
             return RedirectToAction("Index");
-
-
         }
 
         [HttpPost]
@@ -77,10 +72,9 @@ namespace Potlucky.Controllers
             reply.Date = DateTime.Now;
 
             message.Replies.Add(reply);
+            
 
             return RedirectToAction("Index");
-
-
         }
     }
 

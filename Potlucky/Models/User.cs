@@ -11,9 +11,11 @@ namespace Potlucky.Models
         {
             //sets new user image to default image
             if (ImageUrl == null){
-                ImageUrl = "Images/user-icon-image-placeholder.jpg";
+                ImageUrl = "/Images/user-icon-image-placeholder.jpg";
             }
         }
+
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

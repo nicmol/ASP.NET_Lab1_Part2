@@ -59,5 +59,10 @@ namespace Potlucky.Repositories
             Message message = messages.Find(m => m.Date.ToString() == date.ToString());
             return message;
         }
+
+        public IEnumerable<Message> GetMessages()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
