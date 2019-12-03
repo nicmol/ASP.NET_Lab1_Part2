@@ -33,9 +33,9 @@ namespace Potlucky.Controllers
             return View();
         }
 
-        public IActionResult AddReply(string messageDate)
+        public IActionResult AddReply(int messageId)
         {
-            Message message = repo.getMessageByDate(DateTime.Parse(messageDate));
+            Message message = repo.getMessageById(messageId);
             User user = message.Sender;
             ViewBag.name = user.FirstName;
             return View();
@@ -59,21 +59,10 @@ namespace Potlucky.Controllers
 
         [HttpPost]
         public RedirectToActionResult AddReply(string firstName, string lastName, string email, 
-            string messageText, string messageDate)
+            string messageText, int messageId)
         {
-            Message message = repo.getMessageByDate(DateTime.Parse(messageDate));
-            User user = new User();
-            Reply reply = new Reply();
-            user.FirstName = firstName;
-            user.LastName = lastName;
-            user.Email = email;
-            reply.MessageText = messageText;
-            reply.Sender = user;
-            reply.Date = DateTime.Now;
-
-            message.Replies.Add(reply);
-            
-
+            repo.AddReplyToMessage(firstName, lastName, email,
+            messageText, messageId);
             return RedirectToAction("Index");
         }
     }

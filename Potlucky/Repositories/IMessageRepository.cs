@@ -11,5 +11,7 @@ namespace Potlucky.Repositories
         List<Message> Messages { get; }
         void AddMessage(Message message);
         Message getMessageByDate(DateTime date);
+        void AddReplyToMessage(string firstName, string lastName, string email, string messageText, int messageId);
+        Message getMessageById(int messageId);
     }
 }

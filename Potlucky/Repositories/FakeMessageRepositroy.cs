@@ -64,5 +64,15 @@ namespace Potlucky.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public void AddReplyToMessage(string firstName, string lastName, string email, string messageText, int messageId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Message getMessageById(int messageId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

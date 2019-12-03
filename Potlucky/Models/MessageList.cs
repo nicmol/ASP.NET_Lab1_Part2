@@ -13,12 +13,22 @@ namespace Potlucky.Models
         {
             messages.Add(message);
         }
- 
+
+        public void AddReplyToMessage(string firstName, string lastName, string email, string messageText, int messageId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Message getMessageByDate(DateTime date)
         {
 
             Message message = messages.Find(m => m.Date.ToString() == date.ToString());
             return message;
+        }
+
+        public Message getMessageById(int messageId)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Message> GetMessages()

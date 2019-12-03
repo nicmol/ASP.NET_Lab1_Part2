@@ -38,7 +38,7 @@ namespace PotluckyXUnitTestProject
 
             // Act
             messageController.AddReply("Nicolette", "Molitor", "molitorn@my.lanecc.edu",
-                                        "I'll bring potatoes", message.Date.ToString());
+                                        "I'll bring potatoes", message.MessageId);
 
             //Assert
             Assert.Equal(beforeCountR + 1, message.Replies.Count);

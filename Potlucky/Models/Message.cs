@@ -14,6 +14,11 @@ namespace Potlucky.Models
 
         private List<Reply> replies = new List<Reply>();
         public List<Reply> Replies { get { return replies; } }
+
+        public void AddReply(Reply reply)
+        {
+            replies.Add(reply);
+        }
         
     }
 }

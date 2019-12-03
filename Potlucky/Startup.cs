@@ -48,7 +48,7 @@ namespace Potlucky
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)//,applicationDbContext)
         {
             if (env.IsDevelopment())
             {
@@ -73,6 +73,9 @@ namespace Potlucky
                     template: "{controller=Home}/{action=Index}/{id?}");
               
             });
+            //create update the database apply migration
+            //context.Database.Migrate();
+           // DbInitializer.Seed(context);
         }
     }
 }

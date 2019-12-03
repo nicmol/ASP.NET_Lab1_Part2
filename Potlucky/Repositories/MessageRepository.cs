@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Potlucky.Repositories
 {
@@ -22,18 +23,17 @@ namespace Potlucky.Repositories
                     var query = _context.Users.Join(_context.Messages, u => u.UserId, msg => msg.Sender.UserId,
                         (u, msg) => new
                         {
-                            UserId = u.UserId,
-                            FirstName = u.FirstName,
-                            LastName = u.LastName,
-                            Email = u.Email,
-                            FavoriteDish = u.FavoriteDish,
-                            IsFeaturedCook = u.IsFeaturedCook,
-                            ImageUrl = u.ImageUrl,
-                            MessageId = msg.MessageId
+                            u.UserId,
+                            u.FirstName,
+                            u.LastName,
+                            u.Email,
+                            u.FavoriteDish,
+                            u.IsFeaturedCook,
+                            u.ImageUrl,
+                            msg.MessageId
 
                         }
                     ).Where(u => u.MessageId == m.MessageId);
-
 
                     foreach (var q in query)
                     {
@@ -49,8 +49,18 @@ namespace Potlucky.Repositories
                     }
 
                     m.Sender = user;
-                }
+                    List<Reply> replies = _context.Replies.FromSql($"SELECT * FROM dbo.Replies WHERE MessageId = {m.MessageId}").ToList();
 
+                    //foreach (Reply reply in replies)
+                    //{
+                    //    List<User> users = _context.Users.FromSql($"SELECT TOP 1 * FROM dbo.Users U" +
+                    //                                       $"JOIN dbo.Replies R ON R.SenderUserId = U.UserId" +
+                    //                                       $"WHERE R.ReplyId = {reply.ReplyId}").ToList();
+                    //    m.AddReply(reply);
+                    //}
+
+
+                }
 
                 return list.ToList();
             }
@@ -59,6 +69,24 @@ namespace Potlucky.Repositories
         public void AddMessage(Message message)
         {
             _context.Messages.Add(message);
+            _context.SaveChanges();
+        }
+
+        public void AddReplyToMessage(string firstName, string lastName, string email,
+            string messageText, int messageId)
+        {
+           
+            User user = new User();
+            Reply reply = new Reply();
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Email = email;
+            reply.MessageText = messageText;
+            reply.Sender = user;
+            reply.Date = DateTime.Now;
+
+            _context.Messages.Find(messageId).Replies.Add(reply);
+            
             _context.SaveChanges();
         }
 
@@ -74,7 +102,12 @@ namespace Potlucky.Repositories
             return message;
         }
 
-        //public void AddReplyToMessage();
+        public void AddReplyToMessage(string firstName, string lastName, string email, string messageText, string messageDate)
+        {
+            throw new NotImplementedException();
+        }
 
+
+        //public void AddReplyToMessage();
     }
 }
