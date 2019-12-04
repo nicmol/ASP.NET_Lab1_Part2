@@ -16,53 +16,7 @@ namespace Potlucky.Repositories
         private readonly ApplicationDbContext _context;
 
         public List<Message> Messages { get {
-                IEnumerable<Message> list = _context.Messages;
-                foreach (Message m in list)
-                {
-                    User user = new User();
-                    var query = _context.Users.Join(_context.Messages, u => u.UserId, msg => msg.Sender.UserId,
-                        (u, msg) => new
-                        {
-                            u.UserId,
-                            u.FirstName,
-                            u.LastName,
-                            u.Email,
-                            u.FavoriteDish,
-                            u.IsFeaturedCook,
-                            u.ImageUrl,
-                            msg.MessageId
-
-                        }
-                    ).Where(u => u.MessageId == m.MessageId);
-
-                    foreach (var q in query)
-                    {
-                        user.UserId = q.UserId;
-                        user.FirstName = q.FirstName;
-                        user.LastName = q.LastName;
-                        user.Email = q.Email;
-                        user.FavoriteDish = q.FavoriteDish;
-                        user.IsFeaturedCook = q.IsFeaturedCook;
-                        user.ImageUrl = q.ImageUrl;
-
-                        break;
-                    }
-
-                    m.Sender = user;
-                    List<Reply> replies = _context.Replies.FromSql($"SELECT * FROM dbo.Replies WHERE MessageId = {m.MessageId}").ToList();
-
-                    //foreach (Reply reply in replies)
-                    //{
-                    //    List<User> users = _context.Users.FromSql($"SELECT TOP 1 * FROM dbo.Users U" +
-                    //                                       $"JOIN dbo.Replies R ON R.SenderUserId = U.UserId" +
-                    //                                       $"WHERE R.ReplyId = {reply.ReplyId}").ToList();
-                    //    m.AddReply(reply);
-                    //}
-
-
-                }
-
-                return list.ToList();
+                return _context.Messages.Include("Sender").Include("Replies.Sender").ToList();
             }
         }
 
@@ -108,6 +62,6 @@ namespace Potlucky.Repositories
         }
 
 
-        //public void AddReplyToMessage();
+       
     }
 }
