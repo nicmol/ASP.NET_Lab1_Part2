@@ -43,16 +43,16 @@ namespace Potlucky
          
 
             //configures DbContext to datatbase
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:Potlucky:ConnectionString"]));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:ConnectionString"]));
         }
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)//,applicationDbContext)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context)
         {
+            
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
             }
             else
             {
@@ -65,6 +65,8 @@ namespace Potlucky
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            //create update the database apply migration
+            context.Database.Migrate();
             app.UseMvc(routes =>
             {
                
@@ -73,8 +75,8 @@ namespace Potlucky
                     template: "{controller=Home}/{action=Index}/{id?}");
               
             });
-            //create update the database apply migration
-            //context.Database.Migrate();
+           
+           
            // DbInitializer.Seed(context);
         }
     }
