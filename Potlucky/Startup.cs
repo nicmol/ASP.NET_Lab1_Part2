@@ -77,7 +77,7 @@ namespace Potlucky
             });
            
            
-           // DbInitializer.Seed(context);
+           // DbInitializer.Seed(context);In program.cs
         }
     }
 }
